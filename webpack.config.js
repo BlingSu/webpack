@@ -113,3 +113,22 @@ let plugins = [
         chunksSortMode: 'dependency'
     })
 ]
+
+if (minimize) {
+    plugins.push(
+            new webpack.optimize.UglifyJsPlugin({
+                mangle: { except: ['$super', '$', 'export', 'require', 'module', '_'] },
+                compress: { warnings: false },
+                output: { comments: false }
+            })
+        )
+}
+
+var config = {
+    entry: entry,
+    resolveLoader: { root: path.join(__dirname, 'node_modules') },
+    output: output,
+    module: { loaders: loaders }
+    resolve: resolve,
+    plugins: plugins
+}
