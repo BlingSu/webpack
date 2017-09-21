@@ -111,6 +111,13 @@ let plugins = [
         inject: true,
         chunks: ['common', 'index', 'webpackAssets'],
         chunksSortMode: 'dependency'
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'home.html',
+        template: __dirname + '/src/html/home.html',
+        inject: true,
+        chunks: ['common', 'index', 'webpackAssets'],
+        chunksSortMode: 'dependency'
     })
 ]
 
