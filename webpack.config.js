@@ -24,9 +24,9 @@ let proxyTarget = 'http://localhost:8888/'
 
 let PATHS = {
     /* process.cwd():返回运行当前脚本的工作目录路径(绝对路径) */
-    publicPath: devServer ? '/webpack-mock/dist' : './'
-    libsPath: path.resolve(process.cwd(), './libs')
-    srcPath: path.resolve(process.cwd(), 'src')
+    publicPath: devServer ? '/webpack-mock/dist' : './',
+    libsPath: path.resolve(process.cwd(), './libs'),
+    srcPath: path.resolve(process.cwd(), 'src'),
     node_modulesPath: path.resolve('./node_modules')
 }
 
@@ -36,8 +36,8 @@ let resolve = {
     alias: {
         jquery: path.join(PATHS.libsPath, 'js/jquery/jquery'),
         underscore: path.join(PATHS.libsPath, 'js/underscore/underscore.js'),
-        bootstrapcss: path.join(PATHS.libsPath, 'css/bootstrap/bootstrap-3.3.5.css')
-        indexcss: paht.join(PATHS.srcPath, 'css/index.css')
+        bootstrapcss: path.join(PATHS.libsPath, 'css/bootstrap/bootstrap-3.3.5.css'),
+        indexcss: path.join(PATHS.srcPath, 'css/index.css')
     }
 }
 
@@ -56,7 +56,7 @@ let output = {
     chunkFilename:devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js'
 }
 
-let loaders = {
+let loaders = [
     {
         test: /\.html$/,
         loader: 'html'
@@ -81,7 +81,7 @@ let loaders = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader', { publicPath: '../' })
     }
-}
+]
 
 let plugins = [
     /* gloab flag */
@@ -128,7 +128,7 @@ var config = {
     entry: entry,
     resolveLoader: { root: path.join(__dirname, 'node_modules') },
     output: output,
-    module: { loaders: loaders }
+    module: { loaders: loaders },
     resolve: resolve,
     plugins: plugins
 }
