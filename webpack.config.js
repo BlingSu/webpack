@@ -82,3 +82,34 @@ let loaders = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader', { publicPath: '../' })
     }
 }
+
+let plugins = [
+    /* gloab flag */
+    new webpack.DefinePlugin({
+        __DEV__: debug,
+        __DEVAPI__: devServer ? '/devApi/' : '""'
+    }),
+    new webpack.optimize.CommonsChunkPlugin(devServer ? {name: 'common', filename: 'js/common.js'} : {name: ['common', 'webpackAssets']}),
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        '_': 'underscore'
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new CleanWebpackPlugin(['dist'], {
+        root: '',
+        verbose: true,
+        dry: false
+    }),
+
+    new ExtractTextPlugin(devServer ? 'css/[name].css' : 'css/[name]-[chunkhash:8].css', {allChunks: true}),
+    new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: __dirname + '/src/index.html',
+        inject: true,
+        chunks: ['common', 'index', 'webpackAssets'],
+        chunksSortMode: 'dependency'
+    })
+]
