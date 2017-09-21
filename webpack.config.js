@@ -37,7 +37,9 @@ let resolve = {
         jquery: path.join(PATHS.libsPath, 'js/jquery/jquery'),
         underscore: path.join(PATHS.libsPath, 'js/underscore/underscore.js'),
         bootstrapcss: path.join(PATHS.libsPath, 'css/bootstrap/bootstrap-3.3.5.css'),
-        indexcss: path.join(PATHS.srcPath, 'css/index.css')
+        indexcss: path.join(PATHS.srcPath, 'css/index.css'),
+        /* mock */
+        mockIndex: path.join(PATHS.srcPath, 'mock/mock.js')
     }
 }
 
