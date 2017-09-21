@@ -55,3 +55,30 @@ let output = {
     filename: devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js',
     chunkFilename:devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js'
 }
+
+let loaders = {
+    {
+        test: /\.html$/,
+        loader: 'html'
+    },
+    {
+        test: /\.(png|gif|jpe?g)$/,
+        loader: 'url-loader',
+        query: {
+            limit: 10000,
+            name: '/img/[name]-[hash:8].[ext]'
+        }
+    },
+    {
+        test: /\.(eot|woff|woff2|ttf|svg)$/,
+        loader: 'url-loader',
+        query: {
+            limit: 5000,
+            name: '/font/[name]-[hash:8].[ext]'
+        }
+    },
+    {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader', { publicPath: '../' })
+    }
+}
