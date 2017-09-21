@@ -24,7 +24,7 @@ let proxyTarget = 'http://localhost:8888/'
 
 let PATHS = {
     /* process.cwd():返回运行当前脚本的工作目录路径(绝对路径) */
-    publicPath: devServer ? '/webpack-mock/dist' : './',
+    publicPath: devServer ? '/test-webpack/dist/' : './',
     libsPath: path.resolve(process.cwd(), './libs'),
     srcPath: path.resolve(process.cwd(), 'src'),
     node_modulesPath: path.resolve('./node_modules')
@@ -53,7 +53,7 @@ let output = {
     path: path.join(__dirname, 'dist'),
     publicPath: PATHS.publicPath,
     filename: devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js',
-    chunkFilename:devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js'
+    chunkFilename: devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js'
 }
 
 let loaders = [
