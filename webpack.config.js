@@ -132,3 +132,36 @@ var config = {
     resolve: resolve,
     plugins: plugins
 }
+
+/* hrm setting */
+
+if (devServer) {
+    config = Merge(
+            config,
+            {
+                plugins: [
+                    new webpack.HotModuleReplacementPlugin({ multiStep: true }),
+                    new OpenBrowserPlugin({ url: 'http://localhost:8080' + PATHS.publicPath + 'index.html' })
+                ],
+                devServer: {
+                    historyApiFallback: true,
+                    hot: true,
+                    inline: true,
+                    stats: 'errors-only',
+                    host: 'localhost',
+                    port: '8080',
+                    proxy: {
+                        '/devApi/*': {
+                            target: proxyTarget,
+                            secure: true,
+                            rewrite: function(req) {
+                                req.url = req.url.replace(/^\/devApi/, '')
+                            }
+                        }
+                    }
+                }
+            }
+        )
+}
+
+module.exports = validate(config)
