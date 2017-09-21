@@ -19,13 +19,24 @@
   },
   "homepage": "https://github.com/angelasubi/webpack-mock#readme",
   "devDependencies": {
-    "clean-webpack-plugin": "^0.1.16",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^2.30.1",
-    "open-browser-webpack-plugin": "0.0.5",
-    "path": "^0.12.7",
-    "webpack": "^3.6.0",
-    "webpack-merge": "^4.1.0",
-    "webpack-validator": "^3.0.0"
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "clean-webpack-plugin": "^0.1.9",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.17.0",
+    "jquery": "^3.2.1",
+    "open-browser-webpack-plugin": "0.0.2",
+    "postcss-loader": "^0.9.1",
+    "purecss": "^0.6.0",
+    "purifycss-webpack-plugin": "^2.0.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.14.0",
+    "webpack-validator": "^2.1.2"
   }
 }
