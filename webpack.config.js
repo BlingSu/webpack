@@ -40,3 +40,18 @@ let resolve = {
         indexcss: paht.join(PATHS.srcPath, 'css/index.css')
     }
 }
+
+let entry = {
+    index: './src/js/index.js',
+    common: [
+        path.join(PATHS.libsPath, 'js/jquery/jquery.js'),
+        path.join(PATHS.libsPath, 'js/underscore/underscore.js')
+    ]
+}
+
+let output = {
+    path: path.join(__dirname, 'dist'),
+    publicPath: PATHS.publicPath,
+    filename: devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js',
+    chunkFilename:devServer ? 'js/[name].js' : 'js/[name]-[chunkhash:8].js'
+}
