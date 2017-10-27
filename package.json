@@ -1,7 +1,7 @@
 {
   "name": "webpack-mock",
   "version": "1.0.0",
-  "description": "webpack+mock demo",
+  "description": "webpack",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --profile --progress --colors --display-error-details",
